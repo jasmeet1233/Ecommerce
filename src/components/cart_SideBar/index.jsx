@@ -1,5 +1,6 @@
-import React from 'react'
-import { data } from '../../data';
+import React from "react";
+import { data } from "../../data";
+import {AiFillDelete} from 'react-icons/ai'
 
 // {
 //     id: 2,
@@ -18,10 +19,11 @@ import { data } from '../../data';
 const SideBar = () => {
   return (
     <div className="fixed z-10 top-0 left-0 w-screen h-screen overflow-auto bg-[rgba(0,0,0,0.4)]">
-      <div className="bg-[#fefefe] w-1/2 h-screen overflow-scroll absolute right-0 ">
-        <div className='relative'>
+      <div className="bg-[#fefefe] sm:w-1/2 w-full h-screen sm:h-screen sm:overflow-scroll   absolute right-0 ">
+
+        <div className="relative pb-5 pt-2">
           <h2 className="text-center text-2xl font-bold">Cart</h2>
-          <button className='absolute left-4 top-2'>X</button>
+          <button className="absolute left-4 top-2">X</button>
         </div>
 
         {data.map((product) => {
@@ -31,14 +33,14 @@ const SideBar = () => {
                 <img src={product.image} className="rounded" />
               </div>
               <div>
-                <div className="min-w-[420px] max-w-[420px]">
+                <div className="sm:min-w-[420px] sm:max-w-[420px] min-w-[200px] font-semibold">
                   {product.title}
                 </div>
-                <div>{product.price}</div>
+                <div className="font-bold pt-1 pl-1">${product.price}</div>
               </div>
 
-              <div className="mr-8 flex align-middle">
-                <button>Delete</button>
+              <div className="sm:mr-8 flex align-middle">
+                <button className="pr-2 sm:pr-0"><AiFillDelete size={20}/></button>
               </div>
             </div>
           );
@@ -46,6 +48,6 @@ const SideBar = () => {
       </div>
     </div>
   );
-}
+};
 
-export default SideBar
+export default SideBar;

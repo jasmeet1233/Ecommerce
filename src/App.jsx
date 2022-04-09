@@ -2,12 +2,13 @@ import React from 'react';
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import SingleProduct from './pages/SingleProduct';
+import SideBar from './components/cart_SideBar';
 
 function App() {
   return (
     <BrowserRouter>
     <div className="relative h-screen w-screen">
-      {/* <SideBar /> */}
+      <SideBar />
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/:id" component={SingleProduct} exact />  
