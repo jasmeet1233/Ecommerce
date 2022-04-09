@@ -1,9 +1,12 @@
 import React from 'react'
+import { NavBar } from '../components'
+import HomeContainer from '../container/HomeContainer'
 
 function Home() {
   return (
     <div>
-      <h1>This is home page.</h1>
+      <NavBar />
+      <HomeContainer />
     </div>
   )
 }
