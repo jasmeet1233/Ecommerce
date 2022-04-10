@@ -4,7 +4,9 @@ import {
   UPDATE_SEARCH,
   CLEAR_FILTERS,
   UPDATE_SORT,
-  SORT_PRODUCTS
+  SORT_PRODUCTS,
+  TOGGLE_WISHLIST,
+  DELETE_WISH
 } from "../actions";
 
 export const filterReducer = (state, action) => {
@@ -103,7 +105,27 @@ export const filterReducer = (state, action) => {
     };
   } 
 
+  if (action.type === TOGGLE_WISHLIST){
+      const updatedList = state.filtered_products.map((item) => {
+        if(item.id === action.payload.value){
+            return {...item, inWishlist: !item.inWishlist}
+        } else {
+            return item
+        }
+      })
+      return {...state, filtered_products: updatedList}
+  }
   
+  if (action.type === DELETE_WISH) {
+    const updatedList = state.filtered_products.map((item) => {
+        if(item.id === action.payload.value){
+            return {...item, inWishlist: false}
+        } else {
+            return item
+        }
+    })
+    return {...state, filtered_products: updatedList}
+  }
   
   return { ...state };
 };

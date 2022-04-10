@@ -1,6 +1,6 @@
 import React, {useContext, useReducer, useEffect} from 'react'
 import {data} from '../data'
-import { UPDATE_FILTERS, FILTER_PRODUCTS , UPDATE_SEARCH, CLEAR_FILTERS, SORT_PRODUCTS, UPDATE_SORT} from '../actions';
+import { UPDATE_FILTERS, FILTER_PRODUCTS , UPDATE_SEARCH, CLEAR_FILTERS, SORT_PRODUCTS, UPDATE_SORT, TOGGLE_WISHLIST, DELETE_WISH} from '../actions';
 import { filterReducer } from '../reducer/filterReducer';
 
 const initialState = {
@@ -42,6 +42,14 @@ export const FilterProvider = ({children}) => {
   const updateSort = (e) => {
     dispatch({type: UPDATE_SORT, payload: {value: e.target.value}});
   }
+
+  const toggleWishlist = (id) => {
+    dispatch({type: TOGGLE_WISHLIST, payload: {value: id}})
+  }
+
+  const deleteWish = (id) => {
+    dispatch({type: DELETE_WISH, payload: {value:id}})
+  }
     
   useEffect(() => {
     dispatch({type: FILTER_PRODUCTS})
@@ -50,7 +58,7 @@ export const FilterProvider = ({children}) => {
 
   return (
     <FilterContext.Provider
-      value={{ ...state, updateFilters, updateSearchText, clearFilters, updateSort }}
+      value={{ ...state, updateFilters, updateSearchText, clearFilters, updateSort, toggleWishlist, deleteWish }}
     >
       {children}
     </FilterContext.Provider>

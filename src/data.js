@@ -13,6 +13,7 @@ export const data = [
       rate: 4.1,
       count: 259,
     },
+    inWishlist: false,
   },
   {
     id: 3,
@@ -27,6 +28,7 @@ export const data = [
       rate: 4.7,
       count: 500,
     },
+    inWishlist: false,
   },
   {
     id: 4,
@@ -41,6 +43,7 @@ export const data = [
       rate: 2.1,
       count: 430,
     },
+    inWishlist: false,
   },
   {
     id: 15,
@@ -55,6 +58,7 @@ export const data = [
       rate: 2.6,
       count: 235,
     },
+    inWishlist: false,
   },
   {
     id: 16,
@@ -69,6 +73,7 @@ export const data = [
       rate: 2.9,
       count: 340,
     },
+    inWishlist: false,
   },
   {
     id: 17,
@@ -83,6 +88,7 @@ export const data = [
       rate: 3.8,
       count: 679,
     },
+    inWishlist: false,
   },
   {
     id: 18,
@@ -97,6 +103,7 @@ export const data = [
       rate: 4.7,
       count: 130,
     },
+    inWishlist: false,
   },
   {
     id: 19,
@@ -111,6 +118,7 @@ export const data = [
       rate: 4.5,
       count: 146,
     },
+    inWishlist: false,
   },
   {
     id: 20,
@@ -125,5 +133,6 @@ export const data = [
       rate: 3.6,
       count: 145,
     },
+    inWishlist: false,
   },
 ];

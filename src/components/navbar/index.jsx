@@ -1,12 +1,13 @@
-import React from 'react'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
-import { useFilterContext } from '../../context/FilterContext';
-import { useUiContext } from '../../context/UiContext';
+import React from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useFilterContext } from "../../context/FilterContext";
+import { useUiContext } from "../../context/UiContext";
+import {BsFillBookmarkStarFill} from 'react-icons/bs'
 
 const NavBar = () => {
-  const {updateSearchText, filters} = useFilterContext()
-  const {toggleSidebar} = useUiContext()
-  const {text} = filters
+  const { updateSearchText, filters } = useFilterContext();
+  const { toggleSidebar, toggleShowWishlist } = useUiContext();
+  const { text } = filters;
 
   return (
     <nav className="pb-7 border-b-[1px] border-gray-400 sm:px-4 ml-14 sm:ml-0 sm:shadow-md sm:border-none cursor-pointer">
@@ -21,12 +22,17 @@ const NavBar = () => {
             onChange={updateSearchText}
           />
         </div>
-        <div className="pt-1" onClick={toggleSidebar}>
-          <AiOutlineShoppingCart size={26} />
+        <div className="pt-1 flex">
+          <div className="pr-6" onClick={toggleShowWishlist}>
+            <BsFillBookmarkStarFill size={26} />
+          </div>
+          <div onClick={toggleSidebar}>
+            <AiOutlineShoppingCart size={26} />
+          </div>
         </div>
       </div>
     </nav>
   );
-}
+};
 
-export default NavBar
+export default NavBar;
