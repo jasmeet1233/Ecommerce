@@ -119,7 +119,7 @@ export const filterReducer = (state, action) => {
   if (action.type === DELETE_WISH) {
     const updatedList = state.filtered_products.map((item) => {
         if(item.id === action.payload.value){
-            return {...item, inWishlist: false}
+            return {...item, inWishlist: !item.inWishlist}
         } else {
             return item
         }
