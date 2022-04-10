@@ -2,10 +2,12 @@ import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import { data } from "../data";
 import { Link } from "react-router-dom";
-
+import { useCartContext } from "../context/CartContext";
 
 const SingleProduct = () => {
     const [size, setSize] = useState(38)
+  const {addToCart} = useCartContext();
+
   const { id } = useParams();
   const [product] = data.filter((product) => {
     return product.id === Number(id)
@@ -60,7 +62,7 @@ const SingleProduct = () => {
 
           <div className="flex justify-between">
             <p className="inline-block font-bold">Price: ${product.price}</p>
-            <button className="bg-red-500 px-4 py-1 rounded-xl mr-12 text-white font-bold">
+            <button className="bg-red-500 px-4 py-1 rounded-xl mr-12 text-white font-bold" onClick={() => addToCart(product)}>
               Add to cart
             </button>
           </div>

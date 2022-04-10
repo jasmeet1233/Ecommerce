@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import { useFilterContext } from '../../context/FilterContext';
 
 const brands = [
   { name: "Max", isSelected: false },
@@ -10,16 +10,17 @@ const category = ["All", "Men", "Women"];
 
 const Filters = () => {
     const [isSelected, setIsSelected] = useState("All");
+    const {updateFilters, clearFilters} = useFilterContext()
 
   return (
-    <div className="border-r-[1px] border-gray-400 sm:w-96 h-[full] mt-10 pr-2 sm:pr-0">
+    <div className="border-r-[1px] border-gray-400 min-w-[150px] max-w-[150px] h-[full] mt-10 pr-2 sm:pr-0">
       <div className="pb-8">
         <h1 className="font-bold pb-2">Category</h1>
         {category.map((item) => {
           return (
-            <p className={`pb-1 ${isSelected === item ? "underline" : ""}`}>
+            <button className={`block pb-1 ${isSelected === item ? "underline" : ""}`} name = 'category' onClick={updateFilters}>
               {item}
-            </p>
+            </button>
           );
         })}
       </div>
@@ -33,8 +34,10 @@ const Filters = () => {
                 <input
                   type="checkbox"
                   defaultChecked={brand.isSelected}
-                  onChange={() => console.log("wassup")}
+                  onChange={updateFilters}
                   className="mr-1"
+                  defaultValue={brand.name}
+                  name = 'brands'
                 />
                 {brand.name}
               </div>
@@ -43,8 +46,8 @@ const Filters = () => {
         </div>
       </div>
 
-      <div className="mt-10 py-1 px-2 rounded w-3/4  bg-red-600">
-        <button className="font-semibold text-white ">Clear Filters</button>
+      <div className="mt-10 py-1 px-2 rounded w-32  bg-red-600">
+        <button className="font-semibold text-white " onClick={clearFilters}>Clear Filters</button>
       </div>
     </div>
   );
