@@ -9,7 +9,7 @@ const HomeContainer = () => {
       <Filters />
 
       <div>
-        <div className=' pt-2 text-right pr-36'>
+        <div className=' pt-4 text-right pr-36'>
           <Sort />
         </div>
         <ProductList />

@@ -7,7 +7,7 @@ const ProductList = () => {
     
   console.log(filtered_products)
   return (
-    <div className="flex flex-wrap px-10 pt-10 justify-between">
+    <div className="flex flex-wrap px-10 pt-6 justify-between">
       {filtered_products.map((item) => {
         return (
           <Link to={`/${item.id}`}>

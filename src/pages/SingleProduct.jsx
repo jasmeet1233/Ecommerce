@@ -18,12 +18,15 @@ const SingleProduct = () => {
   });
   console.log(product);
   return (
-    <div className="max-h-screen w-[800px] m-auto my-12">
-      <div className="pb-16 pl-6 font-medium flex justify-between">
+    <div className="max-h-screen w-[800px] m-auto my-12 pl-10 sm:pl-0">
+      <div className="pb-16 pl-6 font-medium flex sm:justify-between justify-start">
         <Link to={"/"}>
           {"<-"} <span className="underline">Back Home</span>{" "}
         </Link>
-        <div className="mr-20" onClick={toggleSidebar}>
+        <div
+          className="mr-20 sm:ml-0 ml-20 cursor-pointer"
+          onClick={toggleSidebar}
+        >
           <AiOutlineShoppingCart size={24} />
         </div>
       </div>
@@ -41,7 +44,7 @@ const SingleProduct = () => {
             <p className="pr-4 font-extrabold">Select Size: </p>
             <p className="flex w-28 justify-between">
               <p
-                className={`px-[2px] py-[1px] border-[1px] border-black rounded-2xl ${
+                className={`px-[2px] py-[1px] border-[1px] border-black rounded-2xl cursor-pointer ${
                   size === 38 ? "bg-red-300" : ""
                 }`}
                 onClick={() => setSize(38)}
@@ -49,7 +52,7 @@ const SingleProduct = () => {
                 38
               </p>
               <p
-                className={`px-[2px] py-[1px] border-[1px] border-black rounded-2xl ${
+                className={`px-[2px] py-[1px] border-[1px] border-black rounded-2xl cursor-pointer ${
                   size === 40 ? "bg-red-300" : ""
                 }`}
                 onClick={() => setSize(40)}
@@ -57,7 +60,7 @@ const SingleProduct = () => {
                 40
               </p>
               <p
-                className={`px-[2px] py-[1px] border-[1px] border-black rounded-2xl ${
+                className={`px-[2px] py-[1px] border-[1px] border-black rounded-2xl cursor-pointer ${
                   size === 42 ? "bg-red-300" : ""
                 }`}
                 onClick={() => setSize(42)}

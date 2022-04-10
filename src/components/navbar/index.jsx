@@ -9,7 +9,7 @@ const NavBar = () => {
   const {text} = filters
 
   return (
-    <nav className="pb-8 border-b-[1px] border-gray-400 px-4 sm:px-0">
+    <nav className="pb-7 border-b-[1px] border-gray-400 sm:px-4 ml-14 sm:ml-0 sm:shadow-md sm:border-none cursor-pointer">
       <div className="flex justify-between h-12 w-full max-w-4xl m-auto pt-5">
         <div className="font-extrabold text-3xl">M.</div>
         <div className=" border-r">
