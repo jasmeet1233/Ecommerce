@@ -1,12 +1,6 @@
 import React, {useState} from 'react'
 import { useFilterContext } from '../../context/FilterContext';
-
-const brands = [
-  { name: "Max", isSelected: false },
-  { name: "Levis", isSelected: false },
-];
-
-const category = ["All", "Men", "Women"];
+import { brands, category } from '../../utils/filter';
 
 const Filters = () => {
     const [isSelected, setIsSelected] = useState("All");
@@ -18,7 +12,11 @@ const Filters = () => {
         <h1 className="font-bold pb-2">Category</h1>
         {category.map((item) => {
           return (
-            <button className={`block pb-1 ${isSelected === item ? "underline" : ""}`} name = 'category' onClick={updateFilters}>
+            <button className={`block pb-1 ${isSelected === item ? "underline" : ""}`} name = 'category' onClick={(e) => {
+              updateFilters(e);
+              setIsSelected(item)
+            }
+              }>
               {item}
             </button>
           );
@@ -46,7 +44,7 @@ const Filters = () => {
         </div>
       </div>
 
-      <div className="mt-10 py-1 px-2 rounded w-32  bg-red-600">
+      <div className="mt-10 py-1 pl-3 rounded w-28  bg-red-600">
         <button className="font-semibold text-white " onClick={clearFilters}>Clear Filters</button>
       </div>
     </div>

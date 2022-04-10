@@ -1,10 +1,10 @@
 import React from 'react'
-import { data } from '../../data'
 import { Link } from 'react-router-dom'
 import { useFilterContext } from '../../context/FilterContext'
 
 const ProductList = () => {
   const { filtered_products } = useFilterContext();
+    
   console.log(filtered_products)
   return (
     <div className="flex flex-wrap px-10 pt-10 justify-between">

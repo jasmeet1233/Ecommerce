@@ -1,25 +1,32 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { data } from "../data";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import {useUiContext } from "../context/UiContext";
 
 const SingleProduct = () => {
-    const [size, setSize] = useState(38)
-  const {addToCart} = useCartContext();
+  const [size, setSize] = useState(38);
+  const { addToCart } = useCartContext();
+  const [clicked, setClicked] = useState(false);
+  const {toggleSidebar} = useUiContext()
 
   const { id } = useParams();
   const [product] = data.filter((product) => {
-    return product.id === Number(id)
-  })
-  console.log(product)
+    return product.id === Number(id);
+  });
+  console.log(product);
   return (
     <div className="max-h-screen w-[800px] m-auto my-12">
-      <p className="pb-4 pl-6 font-medium">
+      <div className="pb-16 pl-6 font-medium flex justify-between">
         <Link to={"/"}>
           {"<-"} <span className="underline">Back Home</span>{" "}
         </Link>
-      </p>
+        <div className="mr-20" onClick={toggleSidebar}>
+          <AiOutlineShoppingCart size={24} />
+        </div>
+      </div>
       <div className="h-full w-full flex flex-col sm:flex-row">
         <div className="h-4/6 w-1/2">
           <img src={product.image} className="w-3/4 m-auto" />
@@ -62,8 +69,15 @@ const SingleProduct = () => {
 
           <div className="flex justify-between">
             <p className="inline-block font-bold">Price: ${product.price}</p>
-            <button className="bg-red-500 px-4 py-1 rounded-xl mr-12 text-white font-bold" onClick={() => addToCart(product)}>
-              Add to cart
+            <button
+              className="bg-red-500 px-4 py-1 rounded-xl mr-12 text-white font-bold "
+              onClick={() => {
+                addToCart(product);
+                setClicked(true);
+              }}
+              disabled={clicked ? true : false}
+            >
+              {clicked ? "Added" : "Add to cart"}
             </button>
           </div>
         </div>
