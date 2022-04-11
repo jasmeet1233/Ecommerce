@@ -30,7 +30,7 @@ const SideBar = () => {
 
         {cart.map((product) => {
           return (
-            <div className="flex bg-gray-200 mx-7 py-1 my-3 rounded justify-between ">
+            <div className="flex bg-gray-200 mx-7 py-1 my-3 rounded justify-between " key={product.id}>
               <div className="w-14 rounded ml-2 transition-all duration-700">
                 <img src={product.image} className="rounded" />
               </div>

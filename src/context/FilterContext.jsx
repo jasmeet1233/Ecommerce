@@ -54,11 +54,11 @@ export const FilterProvider = ({children}) => {
   useEffect(() => {
     dispatch({type: FILTER_PRODUCTS})
     dispatch({type: SORT_PRODUCTS})
-  }, [state.filters, state.sort])
+  }, [state.filters, state.sort, state.filters.text])
 
   return (
     <FilterContext.Provider
-      value={{ ...state, updateFilters, updateSearchText, clearFilters, updateSort, toggleWishlist, deleteWish }}
+      value={{ ...state, updateFilters, updateSearchText, clearFilters, updateSort }}
     >
       {children}
     </FilterContext.Provider>

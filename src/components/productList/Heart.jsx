@@ -1,11 +1,11 @@
 import React from 'react'
 import { AiOutlineHeart } from "react-icons/ai";
 
-const Heart = ({onClick, id, color}) => {
+const Heart = ({onClick, item, id, color}) => {
     const clickHandler = (e) => {
         e.preventDefault()
         e.stopPropagation();
-        onClick(id)
+        onClick(id, item)
     }
 
   return (

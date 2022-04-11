@@ -10,13 +10,13 @@ const Filters = () => {
     <div className="border-r-[1px] border-gray-400 min-w-[150px] max-w-[150px] h-[full] mt-10 pr-2 sm:pr-0">
       <div className="pb-8">
         <h1 className="font-bold pb-2">Category</h1>
-        {category.map((item) => {
+        {category.map((item, i) => {
           return (
             <button className={`block pb-1 ${isSelected === item ? "underline" : ""}`} name = 'category' onClick={(e) => {
               updateFilters(e);
               setIsSelected(item)
             }
-              }>
+              } key = {i}>
               {item}
             </button>
           );
@@ -26,9 +26,9 @@ const Filters = () => {
       <div>
         <h1 className="font-bold pb-2">Brands</h1>
         <div>
-          {brands.map((brand) => {
+          {brands.map((brand, i) => {
             return (
-              <div className="pb-1">
+              <div className="pb-1" key={i}>
                 <input
                   type="checkbox"
                   defaultChecked={brand.isSelected}

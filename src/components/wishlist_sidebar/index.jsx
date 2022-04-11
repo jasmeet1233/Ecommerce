@@ -2,13 +2,15 @@ import React from "react";
 import { useFilterContext } from "../../context/FilterContext";
 import { AiOutlineClose, AiFillDelete } from "react-icons/ai";
 import { useUiContext } from "../../context/UiContext";
+import { useWishList } from "../../context/WishListContext";
 
 const Wishlist = () => {
-  const { filtered_products, deleteWish } = useFilterContext();
+  // const { filtered_products, deleteWish } = useFilterContext();
   const { toggleShowWishlist } = useUiContext();
-  const wishlist = filtered_products.filter((item) => {
-    return item.inWishlist === true;
-  });
+  const {addToWishlist, deleteWishList, wishList} = useWishList()
+  // const wishlist = filtered_products.filter((item) => {
+  //   return item.inWishlist === true;
+  // });
 
   return (
     <div className="fixed z-50 top-0 left-0 w-full h-full overflow-auto bg-[rgba(0,0,0,0.4)]">
@@ -23,15 +25,15 @@ const Wishlist = () => {
           </button>
         </div>
 
-        {wishlist.length === 0 && (
+        {wishList.length === 0 && (
           <div className="flex justify-center align-middle pt-60 text-purple-500 font-semibold">
             Wishlist is Empty
           </div>
         )}
 
-        {wishlist.map((product) => {
+        {wishList.map((product) => {
           return (
-            <div className="flex bg-gray-200 mx-7 py-1 my-3 rounded justify-between ">
+            <div className="flex bg-gray-200 mx-7 py-1 my-3 rounded justify-between " key = {product.id}>
               <div className="w-14 rounded ml-2 transition-all duration-700">
                 <img src={product.image} className="rounded" />
               </div>
@@ -44,7 +46,7 @@ const Wishlist = () => {
 
               <div
                 className="sm:mr-8 flex align-middle"
-                onClick={() => deleteWish(product.id)}
+                onClick={() => deleteWishList(product.id)}
               >
                 <button className="pr-2 sm:pr-0">
                   <AiFillDelete size={20} />

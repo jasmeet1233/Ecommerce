@@ -5,13 +5,16 @@ import App from './App'
 import { FilterProvider } from "./context/FilterContext";
 import {UiContext} from './context/UiContext'
 import {CartContext} from './context/CartContext'
+import {WishList} from './context/WishListContext'
 
 ReactDOM.render(
   <React.StrictMode>
     <UiContext>
       <FilterProvider>
         <CartContext>
-          <App />
+          <WishList>
+            <App />
+          </WishList>
         </CartContext>
       </FilterProvider>
     </UiContext>
