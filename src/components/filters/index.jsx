@@ -3,18 +3,18 @@ import { useFilterContext } from '../../context/FilterContext';
 import { brands, category } from '../../utils/filter';
 
 const Filters = () => {
-    const [isSelected, setIsSelected] = useState("All");
-    const {updateFilters, clearFilters} = useFilterContext()
+    const { updateFilters, clearFilters, filters } = useFilterContext();
+    const {category: categoryFilter} = filters;
 
   return (
     <div className="border-r-[1px] border-gray-400 min-w-[150px] max-w-[150px] h-[full] mt-10 pr-2 sm:pr-0">
       <div className="pb-8">
         <h1 className="font-bold pb-2">Category</h1>
         {category.map((item, i) => {
+          const isSelected = categoryFilter === item;
           return (
-            <button className={`block pb-1 ${isSelected === item ? "underline" : ""}`} name = 'category' onClick={(e) => {
+            <button className={`block pb-1 ${isSelected ? "underline" : ""}`} name = 'category' onClick={(e) => {
               updateFilters(e);
-              setIsSelected(item)
             }
               } key = {i}>
               {item}

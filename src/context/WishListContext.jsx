@@ -1,10 +1,12 @@
-import React, {useState, useContext} from 'react'
-import { useUiContext } from './UiContext'
-
+import React, {useState, useContext, useEffect} from 'react'
 const WishListContext = React.createContext()
 
 export const WishList = ({children}) => {
     const [wishList, setWishList] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem('wishlist', JSON.stringify(wishList))
+    }, [wishList])
 
     const addToWishlist = (obj) => {
         setWishList([...wishList, obj])

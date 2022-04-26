@@ -5,8 +5,6 @@ import {
   CLEAR_FILTERS,
   UPDATE_SORT,
   SORT_PRODUCTS,
-  TOGGLE_WISHLIST,
-  DELETE_WISH
 } from "../actions";
 
 export const filterReducer = (state, action) => {
@@ -32,7 +30,7 @@ export const filterReducer = (state, action) => {
         };
       }
     }
-  } 
+  }
 
   if (action.type === FILTER_PRODUCTS) {
     const { product_list } = state;
@@ -49,10 +47,10 @@ export const filterReducer = (state, action) => {
       tempProducts = tempProducts.filter(
         (product) => product.category === category
       );
-    } 
-    
-    if(category === 'All'){
-        tempProducts = [...product_list]
+    }
+
+    if (category === "All") {
+      tempProducts = [...product_list];
     }
 
     if (brands.length > 0) {
@@ -64,37 +62,39 @@ export const filterReducer = (state, action) => {
     return { ...state, filtered_products: tempProducts };
   }
 
-    if (action.type === SORT_PRODUCTS) {
-      const { sort, filtered_products } = state;
-      if (sort === "recommended") {
-        return { ...state, ...filtered_products };
-      }
-
-      if (sort === "price-highest") {
-        const sorted_products = filtered_products.sort((a, b) => {
-          return b.price - a.price;
-        });
-        return { ...state, filtered_products: sorted_products };
-      }
-
-      if (sort === "price-lowest") {
-        const sorted_products = filtered_products.sort((a, b) => {
-          return a.price - b.price;
-        });
-        return { ...state, filtered_products: sorted_products };
-      }
+  if (action.type === SORT_PRODUCTS) {
+    const { sort, filtered_products } = state;
+    if (sort === "recommended") {
+      return { ...state, ...filtered_products };
     }
 
+    if (sort === "price-highest") {
+      const sorted_products = filtered_products.sort((a, b) => {
+        return b.price - a.price;
+      });
+      return { ...state, filtered_products: sorted_products };
+    }
 
-  if(action.type === UPDATE_SEARCH){
-      return {...state, filters: {...state.filters, text: action.payload.value}}
+    if (sort === "price-lowest") {
+      const sorted_products = filtered_products.sort((a, b) => {
+        return a.price - b.price;
+      });
+      return { ...state, filtered_products: sorted_products };
+    }
   }
 
-  if(action.type === UPDATE_SORT){
-      return {...state, sort: action.payload.value}
+  if (action.type === UPDATE_SEARCH) {
+    return {
+      ...state,
+      filters: { category: "all", brands: [], text: action.payload.value },
+    };
   }
 
-  if (action.type === CLEAR_FILTERS){
+  if (action.type === UPDATE_SORT) {
+    return { ...state, sort: action.payload.value };
+  }
+
+  if (action.type === CLEAR_FILTERS) {
     return {
       ...state,
       filters: {
@@ -103,29 +103,29 @@ export const filterReducer = (state, action) => {
         brands: [],
       },
     };
-  } 
+  }
 
-  if (action.type === TOGGLE_WISHLIST){
-      const updatedList = state.filtered_products.map((item) => {
-        if(item.id === action.payload.value){
-            return {...item, inWishlist: !item.inWishlist}
-        } else {
-            return item
-        }
-      })
-      return {...state, filtered_products: updatedList}
-  }
-  
-  if (action.type === DELETE_WISH) {
-    const updatedList = state.filtered_products.map((item) => {
-        if(item.id === action.payload.value){
-            return {...item, inWishlist: !item.inWishlist}
-        } else {
-            return item
-        }
-    })
-    return {...state, filtered_products: updatedList}
-  }
-  
+  // if (action.type === TOGGLE_WISHLIST) {
+  //   const updatedList = state.filtered_products.map((item) => {
+  //     if (item.id === action.payload.value) {
+  //       return { ...item, inWishlist: !item.inWishlist };
+  //     } else {
+  //       return item;
+  //     }
+  //   });
+  //   return { ...state, filtered_products: updatedList };
+  // }
+
+  // if (action.type === DELETE_WISH) {
+  //   const updatedList = state.filtered_products.map((item) => {
+  //     if (item.id === action.payload.value) {
+  //       return { ...item, inWishlist: !item.inWishlist };
+  //     } else {
+  //       return item;
+  //     }
+  //   });
+  //   return { ...state, filtered_products: updatedList };
+  // }
+
   return { ...state };
 };

@@ -5,13 +5,8 @@ import { useUiContext } from "../../context/UiContext";
 import { useWishList } from "../../context/WishListContext";
 
 const Wishlist = () => {
-  // const { filtered_products, deleteWish } = useFilterContext();
   const { toggleShowWishlist } = useUiContext();
-  const {addToWishlist, deleteWishList, wishList} = useWishList()
-  // const wishlist = filtered_products.filter((item) => {
-  //   return item.inWishlist === true;
-  // });
-
+  const {addToWishlist, deleteWishList, wishList} = useWishList();
   return (
     <div className="fixed z-50 top-0 left-0 w-full h-full overflow-auto bg-[rgba(0,0,0,0.4)]">
       <div className="bg-[#fefefe] sm:w-1/2 w-full h-full sm:h-screen sm:overflow-scroll   absolute right-0 ">

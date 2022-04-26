@@ -38,17 +38,8 @@ export const FilterProvider = ({children}) => {
       dispatch({type: CLEAR_FILTERS})
   }
 
-
   const updateSort = (e) => {
     dispatch({type: UPDATE_SORT, payload: {value: e.target.value}});
-  }
-
-  const toggleWishlist = (id) => {
-    dispatch({type: TOGGLE_WISHLIST, payload: {value: id}})
-  }
-
-  const deleteWish = (id) => {
-    dispatch({type: DELETE_WISH, payload: {value:id}})
   }
     
   useEffect(() => {

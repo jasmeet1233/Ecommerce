@@ -10,8 +10,8 @@ const SideBar = () => {
   const {deleteProduct, cart} = useCartContext();
 
   return (
-    <div className="fixed z-50 top-0 left-0 w-screen h-screen overflow-auto bg-[rgba(0,0,0,0.4)]">
-      <div className="bg-[#fefefe] sm:w-1/2 w-full h-screen sm:h-screen sm:overflow-scroll   absolute right-0 ">
+    <div className="fixed z-50 top-0 left-0 w-full h-full overflow-auto bg-[rgba(0,0,0,0.4)]">
+      <div className="bg-[#fefefe] sm:w-1/2 w-full h-full sm:h-screen sm:overflow-scroll   absolute right-0 ">
         <div className="relative pb-5 pt-2">
           <h2 className="text-center text-2xl font-bold">Cart</h2>
           <button
@@ -30,7 +30,10 @@ const SideBar = () => {
 
         {cart.map((product) => {
           return (
-            <div className="flex bg-gray-200 mx-7 py-1 my-3 rounded justify-between " key={product.id}>
+            <div
+              className="flex bg-gray-200 mx-7 py-1 my-3 rounded justify-between "
+              key={product.id}
+            >
               <div className="w-14 rounded ml-2 transition-all duration-700">
                 <img src={product.image} className="rounded" />
               </div>
